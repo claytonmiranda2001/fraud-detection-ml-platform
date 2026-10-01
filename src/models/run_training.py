@@ -1,5 +1,9 @@
 from pathlib import Path
 
+from src.data.cleaning import (
+    remove_duplicates,
+)
+
 from src.data.ingestion import (
     load_dataset,
 )
@@ -50,7 +54,17 @@ def main():
     )
 
     print(
-        f"Dataset shape: {df.shape}"
+        f"Dataset shape before cleaning: {df.shape}"
+    )
+
+    print(
+        "Removing duplicate rows..."
+    )
+
+    df = remove_duplicates(df)
+
+    print(
+        f"Dataset shape after cleaning: {df.shape}"
     )
 
     print(
